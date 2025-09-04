@@ -10,7 +10,12 @@ public class PlayerController : MonoBehaviour
     //Acessando o componente de gravidade via c�digo
     public Rigidbody rig;
     public float speed = 40;
-    public float rotSpeed = 3;
+    public float rotSpeedX = 3;   
+    public float rotSpeedY = 3;       
+    public float jumpForce = 10;
+    public LayerMask floorLayers;
+
+    public Transform aim;
 
     //void � uma fun��o que que n�o retorna um valor
     void Start()
@@ -21,10 +26,27 @@ public class PlayerController : MonoBehaviour
     // Update vai ser executado a cada frame
     void Update()
     {
+        aim.localEulerAngles = new Vector3(
+            aim.localEulerAngles.x - Input.GetAxis("Mouse Y") * rotSpeedY,
+            0,
+            0);
+
         transform.eulerAngles = new Vector3(
-        0,
-        transform.eulerAngles.y + Input.GetAxis("Mouse X") * rotSpeed,
-        0);
+            0,
+            transform.eulerAngles.y + Input.GetAxis("Mouse X") * rotSpeedX,
+            0);
+
+
+        if(Physics.Raycast(transform.position, Vector3.down, 1.1f, floorLayers))  
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                 rig.linearVelocity = new Vector3(
+                        rig.linearVelocity.x,
+                        jumpForce,
+                        rig.linearVelocity.z);
+            }
+        }
     }
 
     //
