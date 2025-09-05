@@ -13,10 +13,12 @@ public class PlayerController : MonoBehaviour
     public float rotSpeedX = 3;   
     public float rotSpeedY = 3;       
     public float jumpForce = 10;
+    public float bulletSpeed = 50;
+
     public LayerMask floorLayers;
 
     public Transform aim;
-
+    public GameObject bulletPrefab;
     //void � uma fun��o que que n�o retorna um valor
     void Start()
     {
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     // Update vai ser executado a cada frame
     void Update()
     {
+        //Movimento da camera pra cima e pra baixo e para os lados.
         aim.localEulerAngles = new Vector3(
             aim.localEulerAngles.x - Input.GetAxis("Mouse Y") * rotSpeedY,
             0,
@@ -36,7 +39,15 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles.y + Input.GetAxis("Mouse X") * rotSpeedX,
             0);
 
+        //Quando o botão é pressionado, criamos o objeto bullet na cena, com velocidade 
+        //e para onde a camera está apontando
+        if(Input.GetMouseButtonDown(0))
+        {
+            GameObject b = Instantiate(bulletPrefab, aim.position, aim.rotation);
+            b.GetComponent<Rigidbody>().linearVelocity = bulletSpeed * aim.forward;
+        }
 
+        //Pulo do boneco
         if(Physics.Raycast(transform.position, Vector3.down, 1.1f, floorLayers))  
         {
             if (Input.GetKeyDown(KeyCode.Space))

@@ -334,7 +334,7 @@ Transform:
   m_GameObject: {fileID: 793312556}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -427,7 +427,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 549, y: 1, z: 276.4}
+  m_LocalPosition: {x: 549, y: 1, z: 277.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -536,7 +536,7 @@ Transform:
   m_GameObject: {fileID: 1615862730}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 549, y: 1, z: 276.4}
+  m_LocalPosition: {x: 549, y: 1, z: 277.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -741,10 +741,12 @@ MonoBehaviour:
   rotSpeedX: 3
   rotSpeedY: 3
   jumpForce: 10
+  bulletSpeed: 50
   floorLayers:
     serializedVersion: 2
     m_Bits: 55
   aim: {fileID: 793312557}
+  bulletPrefab: {fileID: 1619294237750829688, guid: 3b98bc4698df24d46ac37ebb0a93748e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
